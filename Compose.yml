@@ -2,3 +2,5 @@ services:
   nginx:
     image: morganis1411/web_server-AWS:1.0
     network_mode: "host"
+    ports:
+      - "8080:80"
