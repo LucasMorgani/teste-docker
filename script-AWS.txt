@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Update packages and install necessaries softwares
+yum update -y
+yum install docker git -y
+
+# Docker group
+sudo usermod -aG docker ec2-user
+
+# Enable and Start Aplications
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Cloning app
+git clone https://github.com/LucasMorgani/teste-docker.git
+cd teste-docker
+
+# Starting docker
+docker compose up -d -p 8080:80 server-web-aws:1.0
