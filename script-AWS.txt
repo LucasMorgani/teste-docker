@@ -16,6 +16,7 @@ sudo systemctl enable docker
 # Cloning app
 cd /home/ec2-user
 git clone https://github.com/LucasMorgani/teste-docker.git
+sleep 20
 cd teste-docker
 
 # Starting docker
