@@ -29,3 +29,5 @@ cat > /usr/share/nginx/html/index.html << EOF
 EOF
 
 chmod 644 /usr/share/nginx/html/index.html
+
+nginx -g 'daemon off;'
