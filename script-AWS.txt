@@ -1,8 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Update packages and install necessaries softwares
 yum update -y
 yum install docker git -y
+
+sleep 60
 
 # Docker group
 sudo usermod -aG docker ec2-user
@@ -12,6 +14,7 @@ sudo systemctl start docker
 sudo systemctl enable docker
 
 # Cloning app
+cd /home/ec2-user
 git clone https://github.com/LucasMorgani/teste-docker.git
 cd teste-docker
 
