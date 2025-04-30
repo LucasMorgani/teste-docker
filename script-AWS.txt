@@ -22,7 +22,7 @@ chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 cd /home/ec2-user
 git clone https://github.com/LucasMorgani/teste-docker.git
 sleep 20
-cd ./teste-docker
+cd /home/ec2-user/teste-docker
 
 # Starting docker
 docker compose -f Compose.yml up -d
