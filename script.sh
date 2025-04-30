@@ -1,12 +1,12 @@
-#!/usr/bin/env bash
-
-# yum install -y jq
+#!/usr/bin/env sh
 
 # Get a token for accessing instance metadata
-TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" \
+    -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
 
 # Get instance metadata including the availability zone
-AVAILABILITY_ZONE=$(curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/availability-zone)
+AVAILABILITY_ZONE=$(curl -s -H "X-aws-ec2-metadata-token: $TOKEN" \
+    http://169.254.169.254/latest/meta-data/placement/availability-zone)
 
 cat > /usr/share/nginx/html/index.html << EOF
 <!DOCTYPE html>

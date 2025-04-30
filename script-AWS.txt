@@ -4,9 +4,10 @@
 yum update -y
 yum install docker git -y
 
-sleep 60
+sleep 30
+
 # Docker group
-sudo usermod -aG docker ec2-user
+usermod -aG docker ec2-user
 
 # Enable and Start Aplications
 sudo systemctl start docker
@@ -19,10 +20,10 @@ curl -SL https://github.com/docker/compose/releases/download/v2.24.5/docker-comp
 chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 
 # Cloning app
-cd /root
+cd /home/ec2-user
 git clone https://github.com/LucasMorgani/teste-docker.git
-sleep 20
-cd /home/ec2-user/teste-docker
+sleep 10
 
 # Starting docker
-/root/.docker/cli-plugins/docker-compose -f Compose.yml up -d
+cd /home/ec2-user/teste-docker
+$DOCKER_CONFIG/cli-plugins/docker-compose -f Compose.yml up -d
