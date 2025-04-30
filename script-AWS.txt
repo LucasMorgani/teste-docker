@@ -16,4 +16,4 @@ git clone https://github.com/LucasMorgani/teste-docker.git
 cd teste-docker
 
 # Starting docker
-docker compose up -d -p 8080:80 server-web-aws:1.0
+docker compose -f Compose.yml up -d
