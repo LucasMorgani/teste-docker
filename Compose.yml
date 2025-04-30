@@ -1,6 +1,6 @@
 services:
   nginx:
-    image: morganis1411/web_server-aws:1.0
+    image: morganis1411/web_server-aws:2.0
     network_mode: "host"
     ports:
       - "8080:80"
