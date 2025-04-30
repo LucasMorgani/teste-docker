@@ -14,16 +14,19 @@ sudo systemctl start docker
 sudo systemctl enable docker
 
 # Install Docker Compose
-DOCKER_CONFIG=/root/.docker
-mkdir -p $DOCKER_CONFIG/cli-plugins
-curl -SL https://github.com/docker/compose/releases/download/v2.24.5/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
-chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+# DOCKER_CONFIG=/root/.docker
+mkdir -p /usr/local/lib/docker/cli-plugins
+curl -SL https://github.com/docker/compose/releases/download/v2.24.5/docker-compose-linux-x86_64 \
+  -o /usr/local/lib/docker/cli-plugins/docker-compose
+chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
 # Cloning app
-cd /home/ec2-user
-git clone https://github.com/LucasMorgani/teste-docker.git
+sudo -u ec2-user git clone https://github.com/LucasMorgani/teste-docker.git /home/ec2-user/teste-docker
+# cd /home/ec2-user
+# git clone https://github.com/LucasMorgani/teste-docker.git
 sleep 10
 
 # Starting docker
-cd /home/ec2-user/teste-docker
-$DOCKER_CONFIG/cli-plugins/docker-compose -f Compose.yml up -d
+# cd /home/ec2-user/teste-docker
+su - ec2-user -c "docker compose -f /home/ec2-user/teste-docker/Compose.yml up -d"
+# $DOCKER_CONFIG/cli-plugins/docker-compose -f Compose.yml up -d
