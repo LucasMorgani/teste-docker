@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 # Get a token for accessing instance metadata
 TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" \
