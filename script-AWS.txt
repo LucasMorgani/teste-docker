@@ -1,32 +1,28 @@
 #!/bin/bash
 
-# Update packages and install necessaries softwares
+# Atualizando pacotes e instalando softwares necessários
 yum update -y
 yum install docker git -y
 
 sleep 30
 
-# Docker group
+# Adicionando ao grupo Docker
 usermod -aG docker ec2-user
 
-# Enable and Start Aplications
+# Habilitando e Startando o Docker
 sudo systemctl start docker
 sudo systemctl enable docker
 
-# Install Docker Compose
-# DOCKER_CONFIG=/root/.docker
+# Instalando o Docker Compose
 mkdir -p /usr/local/lib/docker/cli-plugins
 curl -SL https://github.com/docker/compose/releases/download/v2.24.5/docker-compose-linux-x86_64 \
   -o /usr/local/lib/docker/cli-plugins/docker-compose
 chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
-# Cloning app
+# Clonando o repositório
 sudo -u ec2-user git clone https://github.com/LucasMorgani/teste-docker.git /home/ec2-user/teste-docker
-# cd /home/ec2-user
-# git clone https://github.com/LucasMorgani/teste-docker.git
+
 sleep 10
 
-# Starting docker
-# cd /home/ec2-user/teste-docker
+# Inicializando o Docker
 su - ec2-user -c "docker compose -f /home/ec2-user/teste-docker/Compose.yml up -d"
-# $DOCKER_CONFIG/cli-plugins/docker-compose -f Compose.yml up -d
